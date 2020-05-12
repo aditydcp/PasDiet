@@ -24,5 +24,21 @@ namespace PasDiet
         {
             InitializeComponent();
         }
+        private void OnCari(object sender, RoutedEventArgs e)
+        {
+            if (UmurPengguna.SelectedIndex == -1 || RentangPengguna.SelectedIndex == -1)
+            {
+                MessageBox.Show("Silahkan masukkan Umur atau Rentang Harga");
+            } else
+            {
+                var daftar = Database.Quary((Umur)UmurPengguna.SelectedIndex, (RentangHarga)RentangPengguna.SelectedItem);
+                foreach(var menu in daftar)
+                {
+                    DaftarPaket.Items.Add(menu.NamaMenu);
+                }
+                
+            }
+
+        }
     }
 }

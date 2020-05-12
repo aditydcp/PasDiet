@@ -14,11 +14,18 @@ namespace PasDiet
 
         public static void Insert(Menu menu)
         {
-            using (var db = new LiteDatabase(DBAdress))
+            try
             {
-                col = db.GetCollection<Menu>("MenuMenu");
-                //col.EnsureIndex(x => x.NamaMenu, true);
-                col.Insert(menu);
+                using (var db = new LiteDatabase(DBAdress))
+                {
+                    col = db.GetCollection<Menu>("MenuMenu");
+                    //col.EnsureIndex(x => x.NamaMenu, true);
+                    col.Insert(menu);
+                }
+            }
+            catch
+            {
+
             }
         }
         /**public static void Update(Menu menu)
@@ -48,9 +55,10 @@ namespace PasDiet
             using (var db = new LiteDatabase(DBAdress))
             {
                 col = db.GetCollection<Menu>("MenuMenu");
-                col.EnsureIndex(x => x.NamaMenu, true);
-                var ret = col.Find(x => (x.UmurPengguna == umur) && (x.RentangHargaPengguna == rentangHarga));
+                //col.EnsureIndex(x => x.NamaMenu, true);
+                var ret = col.Find(x => x.NamaMenu.StartsWith("P"));
                 return ret.ToList();
+
             }
 
         }
