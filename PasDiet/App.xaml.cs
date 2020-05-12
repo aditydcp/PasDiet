@@ -12,8 +12,18 @@ namespace PasDiet
     /// Interaction logic for App.xaml
     /// </summary>
     ///     enum Umur
+
+    public partial class App : Application { 
     
-    public partial class App : Application
-    {
+        public App() : base() {
+            CreateDb();
+        }
+        private void CreateDb()
+        {
+            var PaketA = new Menu("Paket A", "Burger", "Soda", Umur.Remaja, RentangHarga.MenengahKeatas);
+            Database.Insert(PaketA);
+
+        }
     }
+    
 }

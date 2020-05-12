@@ -2,9 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using LiteDB;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 using System.Windows;
 
 namespace PasDiet
@@ -19,11 +17,11 @@ namespace PasDiet
             using (var db = new LiteDatabase(DBAdress))
             {
                 col = db.GetCollection<Menu>("MenuMenu");
-                col.EnsureIndex(x => x.NamaMenu, true);
-                
+                //col.EnsureIndex(x => x.NamaMenu, true);
+                col.Insert(menu);
             }
         }
-        public static void Update(Menu menu)
+        /**public static void Update(Menu menu)
         {
             using (var db = new LiteDatabase(DBAdress))
             {
@@ -43,15 +41,16 @@ namespace PasDiet
                 col.Delete(menu.Id);
             }
 
-        }
+        }**/
 
-        public static Menu Quary(string nama)
+        public static List<Menu> Quary(Umur umur)
         {
             using (var db = new LiteDatabase(DBAdress))
             {
                 col = db.GetCollection<Menu>("MenuMenu");
                 col.EnsureIndex(x => x.NamaMenu, true);
-                return col.FindOne(x => x.NamaMenu.StartsWith(nama));
+                var ret = col.Find(x => x.UmurPengguna == umur);
+                return ret.ToList();
             }
 
         }
