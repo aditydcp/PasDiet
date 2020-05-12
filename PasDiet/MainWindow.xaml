@@ -3,9 +3,24 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:local="clr-namespace:PasDiet"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <ObjectDataProvider x:Key="umurEnum" MethodName="GetValues"
+                            ObjectType="{x:Type sys:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="local:Umur"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <ObjectDataProvider x:Key="rentangEnum" MethodName="GetValues"
+                            ObjectType="{x:Type sys:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="local:RentangHarga"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </Window.Resources>
     <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*" />
@@ -22,8 +37,12 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <TextBlock Text="UMUR"/>
+        <TextBlock Text="UMUR" Margin="10,10,0,0"/>
+        <TextBlock Text="BUDGET" Grid.Row="1" Margin="10,10,0,0"/>
 
-        <TextBlock Text="BUDGET" Grid.Row="1"/>
+        <ComboBox Grid.Column="1" MinWidth="150"
+                  ItemsSource="{Binding Source={StaticResource umurEnum}}" Margin="10,10,10,0"/>
+        <ComboBox Grid.Column="1" Grid.Row="1" MinWidth="150"
+                  ItemsSource="{Binding Source={StaticResource rentangEnum}}" Margin="10,10,10,0"/>
     </Grid>
 </Window>

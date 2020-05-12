@@ -43,13 +43,13 @@ namespace PasDiet
 
         }**/
 
-        public static List<Menu> Quary(Umur umur)
+        public static List<Menu> Quary(Umur umur, RentangHarga rentangHarga)
         {
             using (var db = new LiteDatabase(DBAdress))
             {
                 col = db.GetCollection<Menu>("MenuMenu");
                 col.EnsureIndex(x => x.NamaMenu, true);
-                var ret = col.Find(x => x.UmurPengguna == umur);
+                var ret = col.Find(x => (x.UmurPengguna == umur) && (x.RentangHargaPengguna == rentangHarga));
                 return ret.ToList();
             }
 
