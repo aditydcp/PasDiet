@@ -22,6 +22,8 @@ namespace PasDiet
         {
             var PaketA = new Menu("Paket A", "Burger", "Soda", Umur.Remaja, RentangHarga.MenengahKeatas);
             Database.Insert(PaketA);
+            var PaketB = new Menu("Paket B", "Pizza", "Soda", Umur.Remaja, RentangHarga.MenengahKeatas);
+            Database.Insert(PaketB);
 
         }
     }
