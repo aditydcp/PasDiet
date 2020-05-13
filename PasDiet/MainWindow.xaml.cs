@@ -54,17 +54,21 @@ namespace PasDiet
         void DaftarPaketChanged(object sender, SelectionChangedEventArgs e)
         {
             idx = DaftarPaket.SelectedIndex;
-            var menu = daftar[idx];
-            IsiMakanan.Items.Clear();
-            IsiMinuman.Items.Clear();
-            foreach (var item in menu.Makanan)
+            if (idx != -1)
             {
-                IsiMakanan.Items.Add(item);
+                var menu = daftar[idx];
+                IsiMakanan.Items.Clear();
+                IsiMinuman.Items.Clear();
+                foreach (var item in menu.Makanan)
+                {
+                    IsiMakanan.Items.Add(item);
+                }
+                foreach (var item in menu.Minuman)
+                {
+                    IsiMinuman.Items.Add(item);
+                }
             }
-            foreach (var item in menu.Minuman)
-            {
-                IsiMinuman.Items.Add(item);
-            }
+            
         }
     }
 }
