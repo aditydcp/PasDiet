@@ -93,10 +93,10 @@ namespace PasDiet
                 var makanan = new List<string>();
                 var minuman = new List<string>();
 
-                makanan.Add("Kentang rebus");
+                makanan.Add("Kentang goreng");
                 makanan.Add("Roti bakar");
-                makanan.Add("Tempe goreng");
-                makanan.Add("Cah kangkung");
+                makanan.Add("Tahu kukus");
+                makanan.Add("Sop bayam");
 
                 minuman.Add("Susu rendah lemak");
 
