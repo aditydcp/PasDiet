@@ -18,6 +18,7 @@ namespace PasDiet
         public App() : base() {
             CreateDb();
         }
+
         private void CreateDb()
         {
             {
@@ -54,7 +55,6 @@ namespace PasDiet
                 Database.Insert(PaketB);
             }
 
-
             {
                 var makanan = new List<string>();
                 var minuman = new List<string>();
@@ -70,7 +70,6 @@ namespace PasDiet
                 var PaketC = new Menu("Paket C", makanan, minuman, Umur.Dewasa, RentangHarga.MenengahKeatas);
                 Database.Insert(PaketC);
             }
-
 
             {
                 var makanan = new List<string>();
@@ -88,7 +87,6 @@ namespace PasDiet
                 Database.Insert(PaketD);
             }
 
-
             {
                 var makanan = new List<string>();
                 var minuman = new List<string>();
@@ -104,7 +102,6 @@ namespace PasDiet
                 Database.Insert(PaketE);
             }
 
-
             {
                 var makanan = new List<string>();
                 var minuman = new List<string>();
@@ -119,7 +116,6 @@ namespace PasDiet
                 var PaketF = new Menu("Paket F", makanan, minuman, Umur.Remaja, RentangHarga.MenengahKebawah);
                 Database.Insert(PaketF);
             }
-
 
             {
                 var makanan = new List<string>();
@@ -137,7 +133,6 @@ namespace PasDiet
                 Database.Insert(PaketG);
             }
 
-
             {
                 var makanan = new List<string>();
                 var minuman = new List<string>();
@@ -153,7 +148,6 @@ namespace PasDiet
                 var PaketH = new Menu("Paket H", makanan, minuman, Umur.Remaja, RentangHarga.MenengahKeatas);
                 Database.Insert(PaketH);
             }
-
 
             {
                 var makanan = new List<string>();
@@ -215,7 +209,6 @@ namespace PasDiet
                 var PaketL = new Menu("Paket L", makanan, minuman, Umur.Anak, RentangHarga.MenengahKebawah);
                 Database.Insert(PaketL);
             }
-
         }
     }
     
