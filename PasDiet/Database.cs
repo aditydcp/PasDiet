@@ -14,40 +14,22 @@ namespace PasDiet
 
         public static void Insert(Menu menu)
         {
-            using (var db = new LiteDatabase(DBAdress))
+            using var db = new LiteDatabase(DBAdress);
+            col = db.GetCollection<Menu>("MenuMenu");
+            try
             {
-                col = db.GetCollection<Menu>("MenuMenu");
+                col.EnsureIndex(x => x.NamaMenu, true);
                 col.Insert(menu);
             }
+            catch (Exception) { }
         }
-        /**public static void Update(Menu menu)
-        {
-            using (var db = new LiteDatabase(DBAdress))
-            {
-                col = db.GetCollection<Menu>("MenuMenu");
-                col.EnsureIndex(x => x.NamaMenu, true);
-                col.Update(menu);
-            }
-
-        }
-
-        public static void Delete(Menu menu)
-        {
-            using (var db = new LiteDatabase(DBAdress))
-            {
-                col = db.GetCollection<Menu>("MenuMenu");
-                col.EnsureIndex(x => x.NamaMenu, true);
-                col.Delete(menu.Id);
-            }
-
-        }**/
 
         public static List<Menu> Quary(Umur umur, RentangHarga rentangHarga)
         {
             using (var db = new LiteDatabase(DBAdress))
             {
                 col = db.GetCollection<Menu>("MenuMenu");
-                var ret = col.Find(x => (x.UmurPengguna == umur));
+                var ret = col.Find(x => (x.UmurPengguna == umur) && (x.RentangHargaPengguna == rentangHarga));
                 return ret.ToList();
             }
 

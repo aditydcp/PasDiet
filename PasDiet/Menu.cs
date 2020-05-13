@@ -19,12 +19,12 @@ namespace PasDiet
     {
         public int Id { set; get; }
         public string NamaMenu { set; get; }
-        public string Makanan { set; get; }
-        public string Minuman { set; get; }
+        public List<string> Makanan { set; get; }
+        public List<string> Minuman { set; get; }
         public Umur UmurPengguna { set; get; }
         public RentangHarga RentangHargaPengguna { set; get; }
         public Menu() { }
-        public Menu(string NamaMenu, string Makanan, string Minuman, Umur UmurPengguna, RentangHarga RentangHargaPengguna)
+        public Menu(string NamaMenu, List<string> Makanan, List<string> Minuman, Umur UmurPengguna, RentangHarga RentangHargaPengguna)
         {
             this.NamaMenu = NamaMenu;
             this.Makanan = Makanan;
