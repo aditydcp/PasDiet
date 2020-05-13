@@ -32,7 +32,6 @@ namespace PasDiet
                 var ret = col.Find(x => (x.UmurPengguna == umur) && (x.RentangHargaPengguna == rentangHarga));
                 return ret.ToList();
             }
-
         }
     }
 }

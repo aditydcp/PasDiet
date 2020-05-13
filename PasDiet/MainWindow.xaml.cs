@@ -22,12 +22,13 @@ namespace PasDiet
     {
         private int idx;
         private List<Menu> daftar;
+
         public MainWindow()
         {
             InitializeComponent();
             DaftarPaket.SelectionChanged += new SelectionChangedEventHandler(DaftarPaketChanged);
-
         }
+
         private void OnCari(object sender, RoutedEventArgs e)
         {
             if (UmurPengguna.SelectedIndex == -1 || RentangPengguna.SelectedIndex == -1)
@@ -45,12 +46,9 @@ namespace PasDiet
                 {
                     DaftarPaket.Items.Add(item.NamaMenu);
                 }
-                
-
-
             }
-
         }
+
         void DaftarPaketChanged(object sender, SelectionChangedEventArgs e)
         {
             idx = DaftarPaket.SelectedIndex;
@@ -68,7 +66,6 @@ namespace PasDiet
                     IsiMinuman.Items.Add(item);
                 }
             }
-            
         }
     }
 }
