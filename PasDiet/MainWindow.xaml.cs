@@ -20,25 +20,51 @@ namespace PasDiet
     /// </summary>
     public partial class MainWindow : Window
     {
+        private int idx;
+        private List<Menu> daftar;
         public MainWindow()
         {
             InitializeComponent();
+            DaftarPaket.SelectionChanged += new SelectionChangedEventHandler(DaftarPaketChanged);
+
         }
         private void OnCari(object sender, RoutedEventArgs e)
         {
             if (UmurPengguna.SelectedIndex == -1 || RentangPengguna.SelectedIndex == -1)
             {
                 MessageBox.Show("Silahkan masukkan Umur atau Rentang Harga");
-            } else
+            }
+            else
             {
-                var daftar = Database.Quary((Umur)UmurPengguna.SelectedIndex, (RentangHarga)RentangPengguna.SelectedItem);
-                foreach(var menu in daftar)
+                DaftarPaket.Items.Clear();
+                IsiMakanan.Items.Clear();
+                IsiMinuman.Items.Clear();
+                daftar = Database.Quary((Umur)UmurPengguna.SelectedIndex, (RentangHarga)RentangPengguna.SelectedItem);
+                
+                foreach(var item in daftar)
                 {
-                    DaftarPaket.Items.Add(menu.NamaMenu);
+                    DaftarPaket.Items.Add(item.NamaMenu);
                 }
                 
+
+
             }
 
+        }
+        void DaftarPaketChanged(object sender, SelectionChangedEventArgs e)
+        {
+            idx = DaftarPaket.SelectedIndex;
+            var menu = daftar[idx];
+            IsiMakanan.Items.Clear();
+            IsiMinuman.Items.Clear();
+            foreach (var item in menu.Makanan)
+            {
+                IsiMakanan.Items.Add(item);
+            }
+            foreach (var item in menu.Minuman)
+            {
+                IsiMinuman.Items.Add(item);
+            }
         }
     }
 }
